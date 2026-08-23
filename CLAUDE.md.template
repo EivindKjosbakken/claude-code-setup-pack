@@ -1,0 +1,86 @@
+# CLAUDE.md — annotated template
+
+Copy this to `~/.claude/CLAUDE.md` (global, applies everywhere) or to a repo
+root (project-specific). Delete the `>` commentary as you fill it in.
+
+> **The single rule that governs this file: facts, invariants and preferences
+> only.** Recurring problems get a mechanism — a hook, a script, a cron, a CI
+> gate — never a new paragraph here. Every prose rule you add competes with
+> every other one for attention, and the ones that lose are invisible to you.
+>
+> When I audited my own sessions, the rules being violated most were the ones
+> I had written most emphatically. Emphasis is not enforcement.
+
+---
+
+## Interaction style
+
+> Put the thing you care about most first, and make it blunt. Mine begins
+> "BE SHORT. This is the top rule." — because verbosity was the failure I hit
+> daily. Be specific about format: a length cap, whether you want headings,
+> how questions should be posed so you can answer fast.
+
+- <your top preference, stated as an imperative>
+- <output format you actually want>
+- <how you want to be asked questions — numbered? checkboxes? one at a time?>
+
+## Environment truths
+
+> **The highest-value section in the file, and the one people skip.** These are
+> facts the model cannot discover without failing first. Every row here is a
+> failure you only have to pay for once. A table beats prose: it is scannable
+> and each row is independently true.
+
+| Thing | Truth |
+|---|---|
+| Bash cwd | <does it persist between calls, or reset?> |
+| <tool that isn't installed> | Not available. Use <the alternative> instead. |
+| <shell quirk> | <what breaks, and the working form> |
+| <directory that's permission-blocked> | <what an empty result actually means> |
+| <slow command> | Always run in the background |
+
+> Mine has a dozen rows. Examples of the genre: `timeout` not existing on macOS
+> without coreutils; zsh globbing eagerly on unquoted literal paths with
+> brackets; SSH heredocs evaluating locally instead of remotely; TCC-blocked
+> folders returning empty rather than an error. None are guessable. All were
+> learned by watching something fail twice.
+
+## Invariants
+
+> Things that must never happen, especially destructive or outward-facing ones.
+> Be concrete about the boundary — "be careful with git" is not actionable,
+> "never force-push to these branches without explicit per-push approval" is.
+
+- Never <destructive action> without <explicit condition>.
+- Never <outward-facing action — send, publish, deploy> without approval.
+- <credential handling: where they live, where they must never go>
+
+## Tooling
+
+> Which tool wins when several could do the job, and which are banned. Saves
+> the model from picking a plausible-but-wrong path.
+
+- For <task>: use <tool>, never <the tempting alternative>.
+- <naming, style or library conventions you actually enforce>
+
+## Workflow
+
+> Where work is tracked, what gets written down, what "done" means. Be explicit
+> about the finish line — "done" is where agents most often stop early.
+
+- <issue tracker and when an issue gets created>
+- <what must be true before the work is called complete>
+- <what gets logged, and where>
+
+---
+
+## Maintaining this file
+
+1. **When a rule keeps getting violated, that is a signal to mechanise it, not
+   to re-word it.** Move it to a hook and delete the prose. See the `hooks/`
+   directory in this pack for four worked examples.
+2. **Prune on a schedule.** I rewrite mine every few months and cut the
+   backstory: the incident that caused a rule is not the rule. Keep the
+   invariant, drop the anecdote.
+3. **Date structural changes.** A line noting when the file was last rewritten
+   and on what principle prevents slow re-accumulation of the stuff you cut.

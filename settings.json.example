@@ -1,0 +1,35 @@
+{
+  "_comment": "Merge the hooks block below into your existing ~/.claude/settings.json. Do not overwrite the whole file — you will lose your model, permissions and MCP config. If you already have a PreToolUse array, append these entries to it.",
+
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ~/.claude/hooks/pretool-heredoc-guard.py"
+          },
+          {
+            "type": "command",
+            "command": "python3 ~/.claude/hooks/pretool-cd-guard.py"
+          },
+          {
+            "type": "command",
+            "command": "python3 ~/.claude/hooks/pretool-polling-guard.py"
+          }
+        ]
+      },
+      {
+        "_comment": "The secret guard covers file writes as well as commands. A key written into a file is exactly as leaked as one echoed to a terminal.",
+        "matcher": "Bash|Write|Edit|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ~/.claude/hooks/pretool-secret-guard.py"
+          }
+        ]
+      }
+    ]
+  }
+}
