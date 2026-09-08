@@ -90,6 +90,10 @@ post — including this one.
 
 ---
 
-*Built from my working setup. Questions, or want the rest of it —
-[the newsletter](https://eivindkjosbakken.substack.com/) is where I publish
-this stuff weekly.*
+## Keep improving your coding-agent setup
+
+[Get free practical AI-engineering workflows by email](https://eivindkjosbakken.substack.com/subscribe?utm_source=github&utm_medium=readme&utm_campaign=setup_pack_sep2026).
+
+For the full configuration library, [The paid Vault](https://eivindkjosbakken.substack.com/p/the-vault-my-complete-ai-engineering?utm_source=github&utm_medium=readme&utm_campaign=setup_pack_sep2026) includes global and project templates, commands, hooks, prompt patterns and the parallel-agent setup. Access and updates are included while subscribed.
+
+The files in this repository remain free to use; subscribing is optional.
