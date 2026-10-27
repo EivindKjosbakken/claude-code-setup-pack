@@ -10,6 +10,8 @@ prompt that the model agrees with and then ignores twenty turns later.
 
 That distinction is the whole point of the pack.
 
+> New mechanisms and the workflows behind them go out by email: [subscribe free on Substack](https://eivindkjosbakken.substack.com/subscribe?utm_source=github&utm_medium=readme_top&utm_campaign=setup_pack_oct2026).
+
 ---
 
 ## Why rules in `CLAUDE.md` stop working
